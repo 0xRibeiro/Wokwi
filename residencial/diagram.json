@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -172.8,
+      "left": -81.56,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -99.4,
+      "left": 115.2,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "gas1",
+      "top": 59.1,
+      "left": -105.6,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -217.6,
+      "left": -354.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -316.5,
+      "left": -53.4,
+      "attrs": { "temperature": "33.9", "humidity": "84.5" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -44.86,
+      "left": -249.37,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "h-86.4", "v19.2", "v38.4" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "h0.15", "v-38.4", "h76.8", "v-67.2" ] ],
+    [ "oled1:SCL", "esp:27", "green", [ "v-28.8", "h67.5", "v28.8" ] ],
+    [ "oled1:SDA", "esp:14", "blue", [ "v-19.2", "h48.07", "v28.8" ] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "h57.6", "v57.6" ] ],
+    [ "dht1:GND", "esp:GND.3", "black", [ "h67.2", "v115.2" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h144", "v9.2", "h57.6" ] ],
+    [ "dht1:SDA", "esp:23", "green", [ "v9.6", "h57.7", "v57.6" ] ],
+    [ "ldr1:DO", "esp:34", "gold", [ "h48", "v76.2" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v-9.6", "h-48", "v96", "h124.8", "v-67.2" ] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "h-9.6", "v-47.1" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h-28.8", "v-104.8" ] ],
+    [ "gas1:AOUT", "esp:33", "#8f4814", [ "h-163.2", "v-192", "h153.6", "v9.6" ] ],
+    [ "btn1:1.l", "esp:GND.3", "black", [ "h0", "v-67.2" ] ],
+    [ "btn1:2.r", "esp:17", "green", [ "h0.2", "v19.4" ] ]
+  ],
+  "dependencies": {}
+}
